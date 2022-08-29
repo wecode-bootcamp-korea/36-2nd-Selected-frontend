@@ -1,3 +1,9 @@
+import styled from 'styled-components';
+
 export default function Nav() {
-  return <h1>Nav입니다.</h1>;
+  return <Title>Nav입니다.</Title>;
 }
+
+const Title = styled.nav`
+  box-shadow: ${props => props.theme.selectedBoxShadow};
+`;
