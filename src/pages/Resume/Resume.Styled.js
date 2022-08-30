@@ -43,7 +43,7 @@ export const Resume = styled.div`
 
 export const ResumeMakeBox = styled(Resume)`
   ${({ theme }) => theme.variables.flex('column')};
-  color : ${selectedBlue}
+  color: ${selectedBlue};
   font-weight: 600;
 
   label {
