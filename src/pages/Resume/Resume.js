@@ -4,8 +4,25 @@ import { AiOutlineInfoCircle } from 'react-icons/ai';
 import { IoDocuments } from 'react-icons/io5';
 import { MdDriveFolderUpload } from 'react-icons/md';
 import { BsFillCheckCircleFill } from 'react-icons/bs';
+import { useEffect, useState } from 'react';
+import { API } from '../../api.js';
+import { goToUrl } from '../../utills.js';
+import { useNavigate } from 'react-router-dom';
 
 export default function Resume() {
+  const navigate = useNavigate();
+  const [resumeList, setResumeList] = useState([]);
+
+  useEffect(() => {
+    fetch(API.GET_RESUMES, {
+      method: 'GET',
+    })
+      .then(response => response.json())
+      .then(data => {
+        setResumeList(data);
+      });
+  }, []);
+
   return (
     <S.ResumeContainer>
       <S.Header>
@@ -15,7 +32,7 @@ export default function Resume() {
           <AiOutlineInfoCircle />
         </S.HeaderDescription>
       </S.Header>
-      <S.ResumeMakeBox>
+      <S.ResumeMakeBox onClick={() => goToUrl(navigate, '/resume/form')}>
         <S.ResumeMakeBoxIcon color="blue">
           <IoDocuments size="25" />
         </S.ResumeMakeBoxIcon>
@@ -30,108 +47,35 @@ export default function Resume() {
         </label>
         <input type="file" id="upload" name="upload" accept=".pdf" hidden />
       </S.ResumeMakeBox>
-      {RESUME_LIST.map(
-        ({
-          userId,
-          resumeId,
-          language,
-          title,
-          hasCompleted,
-          isMatchUpResume,
-          hasCareerCertification,
-        }) => {
+      {resumeList.length > 0 &&
+        resumeList.map(({ userId, resumeId, title, date }) => {
           return (
             <S.Resume key={resumeId} userId={userId}>
               <S.ResumeInfo>
-                <S.ResumeInfoButton name="matchUp" hidden={!isMatchUpResume}>
+                <S.ResumeInfoButton name="matchUp">
                   매치업 이력서
                 </S.ResumeInfoButton>
-                <S.ResumeInfoButton
-                  name="career"
-                  hidden={!hasCareerCertification}
-                >
+                <S.ResumeInfoButton name="career">
                   경력인증
                   <BsFillCheckCircleFill size="15" />
                 </S.ResumeInfoButton>
               </S.ResumeInfo>
-              <S.ResumeTitle hasCompleted={hasCompleted}>
+              <S.ResumeTitle hasCompleted={true}>
                 <S.ResumeTitleTextBox title="true">
                   {title}
                 </S.ResumeTitleTextBox>
-                <S.ResumeTitleTextBox>2022.08.29</S.ResumeTitleTextBox>
+                <S.ResumeTitleTextBox>{date}</S.ResumeTitleTextBox>
               </S.ResumeTitle>
-              <S.ResumeStatus hasCompleted={hasCompleted}>
-                <S.ResumeStatusLang>
-                  {language === 'kor' ? '한' : '영'}
-                </S.ResumeStatusLang>
-                <S.ResumeStatusInfo>
-                  {hasCompleted ? '작성 완료' : '작성 중'}
-                </S.ResumeStatusInfo>
+              <S.ResumeStatus hasCompleted={true}>
+                <S.ResumeStatusLang>한</S.ResumeStatusLang>
+                <S.ResumeStatusInfo>작성 완료</S.ResumeStatusInfo>
                 <div>
                   <BiDotsVerticalRounded />
                 </div>
               </S.ResumeStatus>
             </S.Resume>
           );
-        }
-      )}
+        })}
     </S.ResumeContainer>
   );
 }
-
-const RESUME_LIST = [
-  {
-    userId: 1,
-    resumeId: 1,
-    language: 'kor',
-    title: 'FE 개발자 임채동입니다.',
-    hasCompleted: true,
-    isMatchUpResume: true,
-    hasCareerCertification: true,
-  },
-  {
-    userId: 1,
-    resumeId: 2,
-    language: 'kor',
-    title: 'FE 개발자 2.',
-    hasCompleted: true,
-    isMatchUpResume: true,
-    hasCareerCertification: true,
-  },
-  {
-    userId: 1,
-    resumeId: 3,
-    language: 'kor',
-    title: 'FE 개발자 3.',
-    hasCompleted: true,
-    isMatchUpResume: true,
-    hasCareerCertification: true,
-  },
-  {
-    userId: 1,
-    resumeId: 4,
-    language: 'kor',
-    title: 'FE 개발자 4.',
-    hasCompleted: true,
-    isMatchUpResume: false,
-    hasCareerCertification: true,
-  },
-  {
-    userId: 1,
-    resumeId: 5,
-    language: 'kor',
-    title: 'FE 개발자 5.',
-    hasCompleted: false,
-    isMatchUpResume: false,
-    hasCareerCertification: true,
-  },
-  {
-    userId: 1,
-    resumeId: 6,
-    language: 'kor',
-    title: 'FE 개발자 6.',
-    hasCompleted: false,
-    isMatchUpResume: false,
-    hasCareerCertification: true,
-  },
-];
