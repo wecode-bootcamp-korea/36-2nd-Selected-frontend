@@ -1,0 +1,32 @@
+[
+  {
+    "id": 1,
+    "img": "/images/Wecode.webp",
+    "companyInfo": "코딩은 위코드에서",
+    "companySubInfo": "시니어 개발자 적극 채용 중!"
+  },
+  {
+    "id": 2,
+    "img": "/images/Tabom.png",
+    "companyInfo": "슬리퍼 업계 1위 의 자부심 따봉 가락신",
+    "companySubInfo": "일본 사무라이 가락신 장인 적극 채용중!"
+  },
+  {
+    "id": 3,
+    "img": "/images/three.jpg",
+    "companyInfo": "자전거는 300리, 자전거 업계 1위",
+    "companySubInfo": "시니어 전기 자전거 앤자니어 모집중!"
+  },
+  {
+    "id": 4,
+    "img": "/images/devMarket.gif",
+    "companyInfo": "가장 빠른 식료품 배달은 Dev Market",
+    "companySubInfo": "번개 Dev Man 모집중!"
+  },
+  {
+    "id": 5,
+    "img": "/images/Selected.png",
+    "companyInfo": "자네 개발자가 되고 싶나? 당신은 이미 Selected",
+    "companySubInfo": "위코드 36기 수료생 모집중!"
+  }
+]

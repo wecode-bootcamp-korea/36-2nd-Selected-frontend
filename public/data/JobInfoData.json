@@ -1,0 +1,37 @@
+[
+  {
+    "jobId": 1,
+    "companyName": "Wecode",
+    "mainImageUrl": "/images/Wecode.webp",
+    "department": "프론트엔드, IT",
+    "tag": "연봉이 최고의 복지"
+  },
+  {
+    "jobId": 2,
+    "companyName": "따봉 가락신",
+    "mainImageUrl": "/images/Tabom.png",
+    "department": "일본 사무라이 정통 가락신팀",
+    "tag": "연봉이 최고의 복지"
+  },
+  {
+    "jobId": 3,
+    "companyName": "삼백리 자전거",
+    "mainImageUrl": "/images/three.jpg",
+    "department": "전기 자전거 연구팀",
+    "tag": "연봉이 최고의 복지"
+  },
+  {
+    "jobId": 4,
+    "companyName": "Dev Market",
+    "mainImageUrl": "/images/devMarket.gif",
+    "department": "빠른배달 수송팀",
+    "tag": "연봉이 최고의 복지"
+  },
+  {
+    "jobId": 5,
+    "companyName": "Selected",
+    "mainImageUrl": "/images/Selected.png",
+    "department": "위코드 36기 출신 드림팀",
+    "tag": "연봉이 최고의 복지"
+  }
+]
