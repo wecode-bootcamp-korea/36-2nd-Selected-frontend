@@ -5,8 +5,6 @@ import Nav from './components/Nav/Nav';
 import Main from './pages/Main/Main';
 import MyPage from './pages/MyPage/MyPage';
 
-import Resume from './pages/Resume/Resume';
-
 import KakaoRedirectHandler from './components/Login/KakaoRedirectHandler';
 
 const Router = () => {
@@ -21,7 +19,6 @@ const Router = () => {
           element={<KakaoRedirectHandler />}
         />
         <Route path="/mypage" element={<MyPage />} />
-        <Route path="/resume" element={<Resume />} />
       </Routes>
       <Footer />
     </BrowserRouter>
