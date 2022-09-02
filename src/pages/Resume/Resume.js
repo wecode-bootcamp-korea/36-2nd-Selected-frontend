@@ -13,14 +13,24 @@ export default function Resume() {
   const navigate = useNavigate();
   const [resumeList, setResumeList] = useState([]);
 
+  // const resumeList = useFetch(API.GET_RESUMES, {
+  //   method: 'GET',
+  //   headers: {
+  //     authorization: token,git
+  //   },
+  // });
+
   useEffect(() => {
-    fetch(API.GET_RESUMES, {
+    const token = localStorage.getItem('token');
+    const options = {
       method: 'GET',
-    })
+      headers: {
+        Authorization: token,
+      },
+    };
+    fetch(API.GET_RESUMES, options)
       .then(response => response.json())
-      .then(data => {
-        setResumeList(data);
-      });
+      .then(data => setResumeList(data));
   }, []);
 
   return (

@@ -1,10 +1,11 @@
 import styled from 'styled-components';
+import variables from '../../../../../styles/variables';
 
 const borderColorLight = '#f1f1f1';
 const backgroundColorHover = '#fbfbfb';
 
 export const FormLink = styled.div`
-  ${({ theme }) => theme.variables.flex()}
+  ${variables.flex()};
   width: 100%;
   padding: 2rem 0;
   border-top: 1px solid ${borderColorLight};
