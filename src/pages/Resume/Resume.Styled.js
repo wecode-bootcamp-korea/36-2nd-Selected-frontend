@@ -1,19 +1,21 @@
 import styled from 'styled-components';
+import variables from '../../styles/variables';
 
 const selectedBlue = ({ theme }) => theme.theme.selectedBlue;
 const selectedBlack = ({ theme }) => theme.theme.selectedBlack;
 const borderColor = '#bababa';
 
 export const ResumeContainer = styled.div`
-  ${({ theme }) => theme.variables.flex()}
+  ${variables.flex()}
   flex-wrap: wrap;
-  width: 60rem;
-  padding: 0rem 4rem;
+  width: 100%;
+  margin-top: 32px;
+  padding: 64px;
   background-color: #f8f8fa;
 `;
 
 export const Header = styled.div`
-  ${({ theme }) => theme.variables.flex('row', 'space-between')};
+  ${variables.flex('row', 'space-between')}
   width: 100%;
   padding: 1rem 0;
   font-weight: 600;
@@ -22,7 +24,7 @@ export const Header = styled.div`
 export const HeaderTitle = styled.div``;
 
 export const HeaderDescription = styled.div`
-  ${({ theme }) => theme.variables.flex()};
+  ${variables.flex()};
   color: ${selectedBlue};
 
   svg {
@@ -31,8 +33,7 @@ export const HeaderDescription = styled.div`
 `;
 
 export const Resume = styled.div`
-  ${({ theme }) =>
-    theme.variables.flex('column', 'space-around', 'space-between')}
+  ${variables.flex('column', 'space-around', 'space-between')};
   width: 12rem;
   height: 10rem;
   margin: 0.5rem;
@@ -42,7 +43,7 @@ export const Resume = styled.div`
 `;
 
 export const ResumeMakeBox = styled(Resume)`
-  ${({ theme }) => theme.variables.flex('column')};
+  ${variables.flex('column')};
   color: ${selectedBlue};
   font-weight: 600;
 
@@ -52,12 +53,12 @@ export const ResumeMakeBox = styled(Resume)`
 `;
 
 export const ResumeMakeBoxIcon = styled.div`
-  ${({ theme }) => theme.variables.flex()};
+  ${variables.flex()};
   width: 4.5rem;
   height: 4.5rem;
   margin-bottom: 1rem;
   border-radius: 50%;
-  background-color: ${({ theme, color }) => {
+  background-color: ${({ color }) => {
     if (color === 'blue') {
       return selectedBlue;
     } else if (color === 'grey') {
@@ -75,7 +76,7 @@ export const ResumeMakeBoxIcon = styled.div`
 `;
 
 export const ResumeInfo = styled.div`
-  ${({ theme }) => theme.variables.flex()};
+  ${variables.flex()};
   padding-top: 0.25rem;
 `;
 
@@ -96,10 +97,11 @@ export const ResumeInfoButton = styled.button`
 `;
 
 export const ResumeTitle = styled.div`
-  ${({ theme }) => theme.variables.flex('column')};
+  ${variables.flex('column')};
   padding: 0 2rem;
   font-weight: bold;
   opacity: ${({ hasCompleted }) => (hasCompleted ? '1' : '0.5')};
+  z-index: -1;
 `;
 
 export const ResumeTitleTextBox = styled.div`
@@ -110,21 +112,20 @@ export const ResumeTitleTextBox = styled.div`
 `;
 
 export const ResumeStatus = styled.div`
-  ${({ theme }) => theme.variables.flex('row', 'space-around', 'center')};
+  ${variables.flex('row', 'space-around', 'center')};
   height: 1rem;
   border-top: 1px solid rgba(0, 0, 0, 0.1);
   font-weight: bold;
   padding: 1rem;
-  color: ${({ hasCompleted, theme }) =>
-    hasCompleted ? selectedBlack : 'grey'};
+  color: ${({ hasCompleted }) => (hasCompleted ? selectedBlack : 'grey')};
 `;
 
 export const ResumeStatusLang = styled.div`
-  ${({ theme }) => theme.variables.flex()};
+  ${variables.flex()};
   padding: 0.25rem;
   font-size: 0.5rem;
   border: 1px solid
-    ${({ hasCompleted, theme }) => (hasCompleted ? selectedBlack : 'grey')};
+    ${({ hasCompleted }) => (hasCompleted ? selectedBlack : 'grey')};
   border-radius: 3px;
 `;
 
