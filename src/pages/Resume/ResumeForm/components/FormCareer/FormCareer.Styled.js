@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import variables from '../../../../../styles/variables';
 
 const selectedBlue = ({ theme }) => theme.theme.selectedBlue;
 const borderColor = '#bababa';
@@ -6,7 +7,7 @@ const borderColorLight = '#f1f1f1';
 const backgroundColorHover = '#fbfbfb';
 
 export const FormCareer = styled.div`
-  ${({ theme }) => theme.variables.flex()}
+  ${variables.flex()};
   width: 100%;
   padding: 2rem 0;
   border-top: 1px solid ${borderColorLight};
@@ -58,10 +59,10 @@ export const Inputs = styled.div`
 `;
 
 export const Description = styled.div`
+  ${variables.flex('row', 'flex-start')};
   color: ${borderColor};
   font-weight: 400;
   font-size: 12px;
-  ${({ theme }) => theme.variables.flex('row', 'flex-start')}
 `;
 
 export const DescriptionInput = styled.input`
@@ -79,7 +80,7 @@ export const DescriptionInput = styled.input`
 `;
 
 export const CareerInfo = styled.div`
-  ${({ theme }) => theme.variables.flex('column', 'flex-start', 'flex-start')};
+  ${variables.flex('column', 'flex-start', 'flex-start')};
   width: 70%;
   padding: 0 2rem;
   font-size: 14px;

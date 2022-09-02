@@ -34,9 +34,10 @@ export default function Footer() {
           Selected, Inc.
         </S.FooterInfo>
         <S.SelectBox
-        //  TODO name="select"
+        // TODO
+        // name="select"
         //   onChange={handleInput}
-        //   defaultValue="한국 (한국어)"
+        // defaultValue="한국 (한국어)"
         >
           <option>한국 (한국어)</option>
           <option>日本 (日本語)</option>

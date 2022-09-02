@@ -32,6 +32,20 @@ export default function FormSkill() {
     );
   };
 
+  const handleSelectSkill = tag => {
+    if (selectedSkills.indexOf(tag) === -1) {
+      return setSelectedSkills([...selectedSkills, tag]);
+    }
+  };
+
+  const handleSearch = tag => {
+    setSearchSkills([]);
+    if (selectedSkills.indexOf(tag) === -1) {
+      setSearchString('');
+      return setSelectedSkills([...selectedSkills, tag]);
+    }
+  };
+
   return (
     <S.FormSkillContainer>
       <S.FormSkill>
@@ -41,14 +55,7 @@ export default function FormSkill() {
         <S.SkillTags>
           {SKILL_LIST.map(({ id, tag }) => {
             return (
-              <S.SkillTag
-                key={id}
-                onClick={e => {
-                  if (selectedSkills.indexOf(tag) === -1) {
-                    return setSelectedSkills([...selectedSkills, tag]);
-                  }
-                }}
-              >
+              <S.SkillTag key={id} onClick={tag => handleSelectSkill(tag)}>
                 {tag}
                 <AiOutlinePlus size="20" />
               </S.SkillTag>
@@ -72,15 +79,7 @@ export default function FormSkill() {
               searchSkills.map(({ id, tag }) => {
                 return (
                   <S.SearchSkill key={id}>
-                    <S.SearchSkillButton
-                      onClick={e => {
-                        setSearchSkills([]);
-                        if (selectedSkills.indexOf(tag) === -1) {
-                          setSearchString('');
-                          return setSelectedSkills([...selectedSkills, tag]);
-                        }
-                      }}
-                    >
+                    <S.SearchSkillButton onClick={tag => handleSearch(tag)}>
                       {tag}
                     </S.SearchSkillButton>
                   </S.SearchSkill>

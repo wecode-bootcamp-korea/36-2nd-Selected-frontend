@@ -1,10 +1,11 @@
 import styled from 'styled-components';
+import variables from '../../../styles/variables';
 
 const selectedBlue = ({ theme }) => theme.theme.selectedBlue;
 const borderColor = '#bababa';
 
 export const ResumeForm = styled.div`
-  ${({ theme }) => theme.variables.flex('column')};
+  ${variables.flex('column')}
   padding: 1rem 3rem;
 `;
 

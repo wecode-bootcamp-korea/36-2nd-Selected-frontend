@@ -1,16 +1,17 @@
 import styled from 'styled-components';
+import variables from '../../../../../styles/variables';
 
 const selectedBlue = ({ theme }) => theme.theme.selectedBlue;
 const borderColor = '#bababa';
 const borderColorLight = '#f1f1f1';
 
 export const FormSkillContainer = styled.div`
-  ${({ theme }) => theme.variables.flex('column')}
+  ${variables.flex('column')}
   width: 100%;
 `;
 
 export const FormSkill = styled.div`
-  ${({ theme }) => theme.variables.flex('column')}
+  ${variables.flex('column')}
   width: 100%;
   padding: 20px 16px;
   background-color: #f5fcf8;
@@ -18,18 +19,18 @@ export const FormSkill = styled.div`
 `;
 
 export const SkillTitle = styled.div`
-  ${({ theme }) => theme.variables.flex('row', 'space-between')}
+  ${variables.flex('row', 'space-between')}
   width:100%;
   margin-bottom: 16px;
 `;
 
 export const SkillTags = styled.div`
-  ${({ theme }) => theme.variables.flex('row', ' flex-start')}
+  ${variables.flex('row', 'flex-start')}
   flex-wrap : wrap;
 `;
 
 export const SkillTag = styled.div`
-  ${({ theme }) => theme.variables.flex('row')}
+  ${variables.flex('row')}
   padding: 10px 16px;
   margin: 8px 5px;
   background-color: ${({ color }) =>
@@ -105,8 +106,8 @@ export const SearchSkillButton = styled.button`
 `;
 
 export const SelectedTags = styled.div`
-  ${({ theme }) => theme.variables.flex('row', ' flex-start')}
-  flex-wrap : wrap;
+  ${variables.flex('row', ' flex-start')};
+  flex-wrap: wrap;
   width: 100%;
   padding: 16px 0;
 `;
