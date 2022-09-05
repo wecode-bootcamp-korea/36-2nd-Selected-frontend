@@ -8,10 +8,11 @@ export const Container = styled.div`
   width: 100%;
   height: 50px;
   flex-direction: row;
+  z-index: 10;
   margin: 0;
   padding: 0;
   top: 0;
-  box-shadow: ${({ theme }) => theme.selectedBoxShadow};
+  box-shadow: ${({ theme }) => theme.theme.selectedBoxShadow};
   position: fixed;
   background-color: #fff;
   list-style-type: none;
