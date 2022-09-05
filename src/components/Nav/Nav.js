@@ -2,11 +2,19 @@ import React from 'react';
 import * as S from './Nav.Styled';
 import Dropdown from './Dropdown/Dropdown';
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { navList } from './NavList';
+import { goToUrl } from '../../utills';
 
 export default function Nav() {
   const [toggle, setToggle] = useState(false);
+  const navigate = useNavigate();
+  const insertedToken = localStorage.getItem('authorization');
+  const logout = () => {
+    localStorage.clear();
+    window.location.replace('');
+    alert('로그아웃 되었습니다');
+  };
 
   return (
     <S.Container>
@@ -23,7 +31,9 @@ export default function Nav() {
         <S.Menu>
           {navList.map(({ id, link, text }) => (
             <S.ListStyle key={id}>
-              <S.AStyle href={link}>{text}</S.AStyle>
+              <S.AStyle onClick={() => goToUrl(navigate, link)}>
+                {text}
+              </S.AStyle>
             </S.ListStyle>
           ))}
         </S.Menu>
@@ -31,9 +41,13 @@ export default function Nav() {
           <S.Button>
             <S.SearchBar />
           </S.Button>
-          <Link to="/login">
-            <S.AsideButton>회원가입/로그인</S.AsideButton>
-          </Link>
+          {insertedToken ? (
+            <S.AsideButton onClick={logout}> 로그아웃</S.AsideButton>
+          ) : (
+            <S.AsideButton onClick={() => goToUrl(navigate, '/login')}>
+              회원가입/로그인
+            </S.AsideButton>
+          )}
           <S.ListStyle>|</S.ListStyle>
           <S.ServiceButton>기업 서비스</S.ServiceButton>
         </S.Aside>
