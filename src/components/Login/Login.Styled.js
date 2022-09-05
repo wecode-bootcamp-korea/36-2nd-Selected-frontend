@@ -13,7 +13,8 @@ export const Modal = styled.div`
   position: absolute;
   width: 28%;
   max-width: 600px;
-  height: 55%;
+  min-width: 500px;
+  height: 550px;
   max-height: 700px;
   top: 50%;
   left: 50%;

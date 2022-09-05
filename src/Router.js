@@ -7,7 +7,7 @@ import MyPage from './pages/MyPage/MyPage';
 import RecruitList from './pages/RecruitList/RecruitList';
 import Resume from './pages/Resume/Resume';
 import ResumeForm from './pages/Resume/ResumeForm/ResumeForm';
-
+import DetailMain from './pages/DetailMain/DetailMain';
 import KakaoRedirectHandler from './components/Login/KakaoRedirectHandler';
 import CareerNav from './pages/Career/components/CareerNav/CareerNav';
 
@@ -22,7 +22,9 @@ const Router = () => {
           path="/oauth/callback/kakao"
           element={<KakaoRedirectHandler />}
         />
+
         <Route path="/mypage" element={<MyPage />} />
+        <Route path="/detail" element={<DetailMain />} />
         <Route path="/recruitList" element={<RecruitList />} />
         <Route path="/resume" element={<Resume />} />
         <Route path="/resume/form" element={<ResumeForm />} />
