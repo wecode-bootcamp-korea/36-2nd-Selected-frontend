@@ -3,15 +3,17 @@ import variables from '../../styles/variables';
 import menuBar from '../../assets/Nav/MenuBar.png';
 import logo from '../../assets/Nav/logo.png';
 import searchBar from '../../assets/Nav/search.png';
+import notice from '../../assets/Nav/notice.png';
 
 export const Container = styled.div`
   width: 100%;
-  height: 50px;
+  height: 60px;
   flex-direction: row;
+  z-index: 1;
   margin: 0;
   padding: 0;
   top: 0;
-  box-shadow: ${({ theme }) => theme.selectedBoxShadow};
+  box-shadow: ${({ theme }) => theme.theme.selectedBoxShadow};
   position: fixed;
   background-color: #fff;
   list-style-type: none;
@@ -20,9 +22,9 @@ export const Container = styled.div`
 export const Title = styled.nav`
   display: flex;
   margin: 0 auto;
-  height: 50px;
+  height: 60px;
   width: 75%;
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 600;
   ${variables.flex(' ', 'space-between')};
 `;
@@ -38,15 +40,15 @@ export const Button = styled.button`
 export const LeftMenu = styled.img.attrs({
   src: `${menuBar}`,
 })`
-  width: 23px;
-  height: 20px;
+  width: 26px;
+  height: 23px;
   ${variables.flex()};
 `;
 
 export const Logo = styled.img.attrs({
   src: `${logo}`,
 })`
-  height: 20px;
+  height: 24px;
   ${variables.flex()};
 `;
 
@@ -58,6 +60,7 @@ export const Menu = styled.ul`
 export const ListStyle = styled.li`
   float: left;
   padding: 15px;
+  color: ${({ theme }) => theme.theme.selectedBlack};
 `;
 
 export const AsideButton = styled(Button)`
@@ -66,6 +69,11 @@ export const AsideButton = styled(Button)`
   text-decoration: none;
 `;
 
+export const NoticeButton = styled.img.attrs({
+  src: `${notice}`,
+})`
+  height: 24px;
+`;
 export const ServiceButton = styled(Button)`
   border: 1px solid #e1e2e3;
   line-height: 30px;
@@ -79,6 +87,7 @@ export const ServiceButton = styled(Button)`
 
 export const AStyle = styled.a`
   text-decoration: none;
+  cursor: pointer;
   color: ${props => props.theme.theme.selectedBlack};
 `;
 
@@ -91,7 +100,7 @@ export const Aside = styled.aside`
 export const SearchBar = styled.img.attrs({
   src: `${searchBar}`,
 })`
-  width: 14px;
-  height: 14px;
+  width: 16px;
+  height: 16px;
   bottom: 0;
 `;

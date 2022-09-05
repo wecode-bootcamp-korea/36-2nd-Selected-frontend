@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const SecondMenu = styled.div`
   height: 100%;
   position: fixed;
-  top: 49px;
+  top: 59px;
   left: 379px;
   background-color: #f6f9fa;
   border-right: 0.8px solid #f3f5f8;
