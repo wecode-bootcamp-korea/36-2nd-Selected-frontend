@@ -4,6 +4,10 @@ import search from '../../assets/search.png';
 import company from '../../assets/company.png';
 import user from '../../assets/user.png';
 
+export const MapWrap = styled.div`
+  width: 70%;
+`;
+
 export const Search = styled.img.attrs({ src: `${search}` })`
   position: absolute;
   width: 30px;
@@ -14,23 +18,35 @@ export const Wrap = styled.div`
   margin: 5% auto;
   width: 100%;
   .slick-prev {
-    left: calc((100% - 1440px) / 2);
-    z-index: 9999;
+    left: calc((100% - 1550px) / 2);
+    z-index: 9;
+    ::before {
+      ${variables.flex()}
+      position: absolute;
+      top: -95px;
+      width: 40px;
+      height: 90px;
+      opacity: 0.75;
+      border-radius: 30px;
+      background-color: #fff;
+      color: #6666;
+      content: '<';
+    }
   }
   .slick-next {
-    right: calc((100% - 1400px) / 2);
-  }
-  .slick-prev:before,
-  .slick-next:before {
-    ${variables.flex()}
-    position: absolute;
-    top: -95px;
-    width: 40px;
-    height: 90px;
-    opacity: 0.75;
-    border-radius: 30px;
-    background-color: #fff;
-    color: #6666;
+    right: calc((100% - 1500px) / 2);
+    ::before {
+      ${variables.flex()}
+      position: absolute;
+      top: -95px;
+      width: 40px;
+      height: 90px;
+      opacity: 0.75;
+      border-radius: 30px;
+      background-color: #fff;
+      color: #6666;
+      content: '>';
+    }
   }
 `;
 
@@ -38,7 +54,7 @@ export const PositionInfo = styled.div`
   ${variables.flex()}
   ${variables.absoluteCenter}
   height: 80px;
-  width: 90%;
+  width: 70%;
   color: white;
   font-size: 18px;
   font-weight: 700;
@@ -55,11 +71,12 @@ export const PositionInfo = styled.div`
   );
 `;
 
-export const CarouselShortCut = styled.a`
+export const CarouselShortCut = styled.div`
   ${variables.flex()}
   padding-top: 20px;
   font-weight: bold;
   text-decoration: none;
+  color: blue;
 `;
 
 export const CompanySubInfo = styled.div`
@@ -76,9 +93,10 @@ export const CompanyInfo = styled.div`
 `;
 
 export const Company = styled.img`
+  ${variables.flex()}
   width: 100%;
-  height: 400px;
-  padding: 12px 12px 25px 12px;
+  height: 500px;
+  padding: 12px 15px 25px 15px;
 `;
 
 export const JobSuggest = styled.div`
@@ -159,8 +177,8 @@ export const WorkOrLeaveButton = styled.button`
 export const ProfileMatchUp = styled.ul`
   ${variables.flex()};
   height: 100px;
-  width: 100%;
-  padding: 60px 121px 85px 121px;
+  width: 70%;
+  margin-left: 15%;
 `;
 
 export const Profile = styled.li`
@@ -222,6 +240,7 @@ export const TagDetail = styled.div`
 `;
 
 export const JobInfoImg = styled.img`
+  ${variables.flex()}
   width: 100%;
   height: 400px;
   padding: 12px 12px 12px 12px;
@@ -266,26 +285,45 @@ export const companyDepartButton = styled.div`
 export const JobInfoWrap = styled.div`
   margin: 5% auto;
   width: 100%;
-  padding: 0px 50px 0px 50px;
+  padding: 0px 15% 0px 15%;
 
   .slick-prev {
     left: calc((100% - 1330px) / 2);
     z-index: 9999;
+    ::before {
+      ${variables.flex()}
+      position: absolute;
+      top: -280px;
+      width: 50px;
+      height: 50px;
+      opacity: 0.75;
+      border-radius: 50%;
+      background-color: white;
+      border: 1px solid lightgray;
+      color: #e1e2e3;
+      box-shadow: 0 2px 2px 0 rgb(0 0 0 / 10%);
+      pointer-events: all;
+      content: '<';
+    }
   }
   .slick-next {
     right: calc((100% - 1260px) / 2);
-  }
-  .slick-prev:before,
-  .slick-next:before {
-    ${variables.flex()}
-    position: absolute;
-    top: -280px;
-    width: 50px;
-    height: 50px;
-    opacity: 1;
-    border-radius: 50%;
-    background-color: white;
-    border: 1px solid #e1e2e3;
-    color: #e1e2e3;
+    &:hover {
+      color: solid black;
+    }
+    ::before {
+      ${variables.flex()}
+      position: absolute;
+      top: -280px;
+      width: 50px;
+      height: 50px;
+      opacity: 0.75;
+      border-radius: 50%;
+      background-color: white;
+      border: 1px solid lightgray;
+      color: #e1e2e3;
+      box-shadow: 0 2px 2px 0 rgb(0 0 0 / 10%);
+      content: '>';
+    }
   }
 `;

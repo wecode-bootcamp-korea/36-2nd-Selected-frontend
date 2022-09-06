@@ -3,8 +3,12 @@ import Slider from 'react-slick';
 import * as S from './Main.Styled.js';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
+import { goToUrl } from '../../utills.js';
+import { useNavigate } from 'react-router-dom';
+import { API } from '../../api';
 
 export default function Main() {
+  const navigate = useNavigate();
   const [carouselData, setCarouselData] = useState([]);
   const [jobInfoData, setJobInfoData] = useState([]);
 
@@ -17,12 +21,14 @@ export default function Main() {
   }, []);
 
   useEffect(() => {
-    fetch('/data/JobInfoData.json', {
+    fetch(`${API.GET_JOBTAGS}`, {
       method: 'GET',
     })
       .then(response => response.json())
       .then(data => setJobInfoData(data));
   }, []);
+
+  const { jobs } = jobInfoData;
 
   const settings = {
     infinite: true,
@@ -31,6 +37,7 @@ export default function Main() {
     slidesToShow: 1,
     slidesToScroll: 1,
     centerMode: true,
+    centerPadding: '300px',
     pauseOnHover: true,
     autoplaySpeed: 3000,
   };
@@ -47,21 +54,19 @@ export default function Main() {
         <Slider {...settings}>
           {carouselData?.map(carouselList => {
             return (
-              <>
+              <S.MapWrap key={carouselList.id}>
                 <S.Company src={carouselList.img} />
                 <S.CompanyInfo>{carouselList.companyInfo}</S.CompanyInfo>
                 <S.CompanySubInfo>
                   {carouselList.companySubInfo}
                 </S.CompanySubInfo>
-                <S.CarouselShortCut href="www.wecode.com">
-                  바로가기 〉
-                </S.CarouselShortCut>
-              </>
+                <S.CarouselShortCut>바로가기 〉</S.CarouselShortCut>
+              </S.MapWrap>
             );
           })}
         </Slider>
       </S.Wrap>
-      <S.PositionInfo>
+      <S.PositionInfo onClick={() => goToUrl(navigate, '/recruitlist')}>
         채용 중인 포지션 보러가기
         <S.Search />
       </S.PositionInfo>
@@ -93,27 +98,26 @@ export default function Main() {
       </S.ProfileMatchUp>
       <S.JobInfoWrap>
         <S.Tag>
-          <S.TagBold>
-            #{jobInfoData.length > 0 && jobInfoData[0].tag}{' '}
-          </S.TagBold>
+          <S.TagBold>{jobInfoData.length > 0 && jobInfoData[0].tag} </S.TagBold>
           회사를 소개합니다
         </S.Tag>
-        <S.TagDetail>바로가기 〉</S.TagDetail>
+        <S.TagDetail>포지션으로 더보기 〉</S.TagDetail>
         <Slider {...JobInfoCarousel}>
-          {jobInfoData.map(jobInfoList => {
-            return (
-              <>
-                <S.JobInfoImg src={jobInfoList.mainImageUrl} />
-                <S.companyDepartButton>
-                  <S.CompanyAndDepart key={jobInfoList.jobId}>
-                    <S.CompanyName>{jobInfoList.companyName}</S.CompanyName>
-                    <S.Department>{jobInfoList.department}</S.Department>
-                  </S.CompanyAndDepart>
-                  <S.JobInfoButton>팔로우</S.JobInfoButton>
-                </S.companyDepartButton>
-              </>
-            );
-          })}
+          {jobs &&
+            jobs.map(jobInfoList => {
+              return (
+                <S.MapWrap key={jobInfoList.jobId}>
+                  <S.JobInfoImg src={jobInfoList.mainImageUrl} />
+                  <S.companyDepartButton key={jobInfoList.jobId}>
+                    <S.CompanyAndDepart>
+                      <S.CompanyName>{jobInfoList.companyName}</S.CompanyName>
+                      <S.Department>{jobInfoList.department}</S.Department>
+                    </S.CompanyAndDepart>
+                    <S.JobInfoButton>팔로우</S.JobInfoButton>
+                  </S.companyDepartButton>
+                </S.MapWrap>
+              );
+            })}
         </Slider>
       </S.JobInfoWrap>
     </>

@@ -3,7 +3,8 @@ import styled from 'styled-components';
 
 export const footerMenu = styled.div`
   font-weight: ${props => props.font};
-  font-size: 25px;
+  font-size: 20px;
+  padding-right: 50px;
 `;
 
 export const FooterInfo = styled.div`
@@ -15,10 +16,10 @@ export const FooterInfo = styled.div`
 export const MenuWrap = styled.div`
   display: flex;
   align-items: center;
-  justify-content: space-around;
   width: 100%;
   border-top: 1px solid lightgray;
   padding: 30px 0px 30px 0px;
+  padding-left: 5%;
 `;
 
 export const InfoWrap = styled.div`
@@ -26,7 +27,7 @@ export const InfoWrap = styled.div`
   justify-content: space-between;
   width: 90%;
   padding-top: 1%;
-  margin-left: 5%;
+  margin: 0% 0% 5% 5%;
   border-top: 1px solid lightgray;
 `;
 
