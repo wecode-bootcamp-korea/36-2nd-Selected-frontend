@@ -3,13 +3,19 @@ import Slider from 'react-slick';
 import variables from '../../../../styles/variables';
 
 export const CareerNav = styled.div`
-  margin: 16px 48px;
+  position: fixed;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 74%;
+  margin: 0 auto;
+  padding: 20px 0 px;
   color: #333333;
+  z-index: 10;
 `;
 
 export const NavHeader = styled.div`
   ${variables.flex('row', 'flex-start')};
-  width: 100%;
+  width: 74%;
 `;
 
 export const CategoryDivider = styled.div`

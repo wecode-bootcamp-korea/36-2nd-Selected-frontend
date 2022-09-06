@@ -5,17 +5,25 @@ const selectedBlue = ({ theme }) => theme.theme.selectedBlue;
 const selectedBlack = ({ theme }) => theme.theme.selectedBlack;
 const borderColor = '#bababa';
 
+export const ResumeBody = styled.div`
+  ${variables.flex()};
+  width: 100%;
+  background-color: #f8f8fa;
+`;
+
 export const ResumeContainer = styled.div`
   ${variables.flex()}
   flex-wrap: wrap;
-  width: 60rem;
-  padding: 0rem 4rem;
+  max-width: 130rem;
+  margin-top: 32px;
+  padding: 64px;
   background-color: #f8f8fa;
 `;
 
 export const Header = styled.div`
   ${variables.flex('row', 'space-between')}
   width: 100%;
+  max-width: 1000px;
   padding: 1rem 0;
   font-weight: 600;
 `;
@@ -29,6 +37,12 @@ export const HeaderDescription = styled.div`
   svg {
     margin-left: 0.5rem;
   }
+`;
+
+export const ResumeListContainer = styled.div`
+  ${variables.flex()}
+  max-width: 1100px;
+  flex-wrap: wrap;
 `;
 
 export const Resume = styled.div`
@@ -100,7 +114,6 @@ export const ResumeTitle = styled.div`
   padding: 0 2rem;
   font-weight: bold;
   opacity: ${({ hasCompleted }) => (hasCompleted ? '1' : '0.5')};
-  z-index: -1;
 `;
 
 export const ResumeTitleTextBox = styled.div`

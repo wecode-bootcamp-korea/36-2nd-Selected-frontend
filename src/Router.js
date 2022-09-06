@@ -28,6 +28,7 @@ const Router = () => {
         <Route path="/recruitList" element={<RecruitList />} />
         <Route path="/resume" element={<Resume />} />
         <Route path="/resume/form" element={<ResumeForm />} />
+        <Route path="/resume/:resumesId" element={<ResumeForm />} />
         <Route path="/career" element={<CareerNav />} />
       </Routes>
       <Footer />

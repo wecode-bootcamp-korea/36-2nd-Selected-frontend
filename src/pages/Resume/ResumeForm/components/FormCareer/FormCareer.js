@@ -1,9 +1,12 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { addCareerDataState, hasCareerInfoState } from '../../../../../atom.js';
 import * as S from './FormCareer.Styled.js';
+import { useRecoilState } from 'recoil';
 
 export default function FormCareer() {
-  const [isChecked, setIsChecked] = useState(false);
-  const [dataInfo, setDateInfo] = useState({
+  const [isCheckedFormCareer, setIsCheckedFormCareer] =
+    useRecoilState(hasCareerInfoState);
+  const [dateInfo, setDateInfo] = useState({
     startYear: '',
     startMonth: '',
     endYear: '',
@@ -11,18 +14,54 @@ export default function FormCareer() {
   });
 
   const [careerInfo, setCareerInfo] = useState({
-    company: '',
+    companyName: '',
     department: '',
   });
 
+  const getDateFromInput = () => {
+    const { startYear, startMonth, endYear, endMonth } = dateInfo;
+    const startDateObj = new Date(startYear, startMonth - 1);
+    const endDateObj = new Date(endYear, endMonth - 1);
+
+    let startDate = `${startDateObj.getFullYear()}-${
+      startDateObj.getMonth() + 1
+    }`;
+    let endDate = `${endDateObj.getFullYear()}-${endDateObj.getMonth() + 1}`;
+
+    if (endDate === '1899-12') {
+      endDate = `${new Date().getFullYear()}-${new Date().getMonth() + 1}`;
+    }
+
+    return {
+      startDate,
+      endDate,
+    };
+  };
+
   const handleChangeDate = e => {
     const { name, value } = e.target;
-    setDateInfo({ ...dataInfo, [name]: value });
+    setDateInfo({ ...dateInfo, [name]: value });
   };
+
   const handleChangeCareer = e => {
     const { name, value } = e.target;
     setCareerInfo({ ...careerInfo, [name]: value });
   };
+
+  const [addCareerData, setAddCareerData] = useRecoilState(addCareerDataState);
+  const handleSubmitCareer = () => {
+    setAddCareerData([{ ...careerInfo, ...getDateFromInput() }]);
+  };
+
+  useEffect(() => {
+    console.log(addCareerData);
+    // const { companyName, department } = addCareerData[0];
+    // setCareerInfo({ companyName, department });
+    // const { startDate, endDate } = addCareerData[0];
+    // console.log('startDate:', startDate);
+    // console.log('endDate:', endDate);
+    // setDateInfo();
+  }, [addCareerData]);
 
   return (
     <S.FormCareer>
@@ -34,7 +73,7 @@ export default function FormCareer() {
             maxLength="4"
             className="year"
             placeholder="YYYY"
-            value={dataInfo.startYear}
+            value={dateInfo.startYear}
             onChange={handleChangeDate}
           />
           <span> . </span>
@@ -44,11 +83,11 @@ export default function FormCareer() {
             maxLength="2"
             className="month"
             placeholder="MM"
-            value={dataInfo.startMonth}
+            value={dateInfo.startMonth}
             onChange={handleChangeDate}
           />
           <span> - </span>
-          {!isChecked && (
+          {!isCheckedFormCareer && (
             <>
               <S.InputYear
                 name="endYear"
@@ -56,18 +95,17 @@ export default function FormCareer() {
                 maxLength="4"
                 className="year"
                 placeholder="YYYY"
-                value={dataInfo.endYear}
+                value={dateInfo.endYear}
                 onChange={handleChangeDate}
               />
               <span> . </span>
-
               <S.InputMonth
                 name="endMonth"
                 type="text"
                 maxLength="2"
                 className="month"
                 placeholder="MM"
-                value={dataInfo.endMonth}
+                value={dateInfo.endMonth}
                 onChange={handleChangeDate}
               />
             </>
@@ -76,8 +114,11 @@ export default function FormCareer() {
         <S.Description>
           <S.DescriptionInput
             type="checkbox"
-            checked={isChecked}
-            onChange={() => setIsChecked(prev => !prev)}
+            checked={isCheckedFormCareer}
+            onChange={() => {
+              setIsCheckedFormCareer(prev => !prev);
+              setDateInfo({ ...dateInfo, endYear: '', endMonth: '' });
+            }}
           />
           <span>현재 재직중</span>
         </S.Description>
@@ -86,8 +127,8 @@ export default function FormCareer() {
         <S.CareerInfoInput
           type="text"
           maxLength="50"
-          name="company"
-          value={careerInfo.company}
+          name="companyName"
+          value={careerInfo.companyName}
           placeholder="회사명"
           onChange={handleChangeCareer}
         />
@@ -100,6 +141,9 @@ export default function FormCareer() {
           onChange={handleChangeCareer}
         />
       </S.CareerInfo>
+      <S.SubmitCareerButton onClick={handleSubmitCareer}>
+        확인
+      </S.SubmitCareerButton>
     </S.FormCareer>
   );
 }

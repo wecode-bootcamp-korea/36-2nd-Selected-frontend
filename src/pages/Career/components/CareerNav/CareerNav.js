@@ -45,7 +45,6 @@ export default function CareerNav() {
           setSelectedCategory={setSelectedCategory}
           fontSize="20px"
         />
-        <S.CategoryDivider>|</S.CategoryDivider>
         {!isMainCategory && (
           <NavHeaderSelectSub
             isOpened={isOpened}
