@@ -2,14 +2,16 @@ import { useState } from 'react';
 import * as S from './FormSkill.Styled.js';
 import { AiOutlinePlus, AiOutlineClose } from 'react-icons/ai';
 import { RiSearch2Line } from 'react-icons/ri';
+import { useRecoilState } from 'recoil';
+import { addSkillDataState } from '../../../../../atom.js';
 
 export default function FormSkill() {
   const [selectedSkills, setSelectedSkills] = useState([]);
   const [searchSkills, setSearchSkills] = useState([]);
   const [searchString, setSearchString] = useState('');
   const orderedSkills = SKILL_LIST.sort((a, b) => {
-    const first = a.tag.toLowerCase();
-    const second = b.tag.toLowerCase();
+    const first = a.skillName.toLowerCase();
+    const second = b.skillName.toLowerCase();
     if (first > second) {
       return 1;
     }
@@ -24,7 +26,7 @@ export default function FormSkill() {
     setSearchString(value);
     setSearchSkills(
       orderedSkills.filter(x => {
-        if (x.tag.toLowerCase().indexOf(value.toLowerCase()) !== -1) {
+        if (x.skillName.toLowerCase().indexOf(value.toLowerCase()) !== -1) {
           return true;
         }
         return false;
@@ -32,19 +34,23 @@ export default function FormSkill() {
     );
   };
 
-  const handleSelectSkill = tag => {
-    if (selectedSkills.indexOf(tag) === -1) {
-      return setSelectedSkills([...selectedSkills, tag]);
+  const handleSelectSkill = (e, { skillId, skillName }) => {
+    if (selectedSkills.indexOf(skillName) === -1) {
+      setSelectedSkills([...selectedSkills, skillName]);
+      setAddSkillData([...addSkillData, { skillId, skillName }]);
     }
   };
 
-  const handleSearch = tag => {
+  const handleSearch = (e, { skillId, skillName }) => {
     setSearchSkills([]);
-    if (selectedSkills.indexOf(tag) === -1) {
+    if (selectedSkills.indexOf(skillName) === -1) {
       setSearchString('');
-      return setSelectedSkills([...selectedSkills, tag]);
+      setSelectedSkills([...selectedSkills, skillName]);
+      setAddSkillData([...addSkillData, { skillId, skillName }]);
     }
   };
+
+  const [addSkillData, setAddSkillData] = useRecoilState(addSkillDataState);
 
   return (
     <S.FormSkillContainer>
@@ -53,10 +59,13 @@ export default function FormSkill() {
           <p>많이 쓰는 스킬을 추가해보세요!</p>
         </S.SkillTitle>
         <S.SkillTags>
-          {SKILL_LIST.map(({ id, tag }) => {
+          {SKILL_LIST.map(({ skillId, skillName }) => {
             return (
-              <S.SkillTag key={id} onClick={tag => handleSelectSkill(tag)}>
-                {tag}
+              <S.SkillTag
+                key={skillId}
+                onClick={e => handleSelectSkill(e, { skillId, skillName })}
+              >
+                {skillName}
                 <AiOutlinePlus size="20" />
               </S.SkillTag>
             );
@@ -76,11 +85,13 @@ export default function FormSkill() {
         <S.SearchSkills searchString={searchSkills.length > 0 && searchString}>
           <ul>
             {searchSkills.length > 0 &&
-              searchSkills.map(({ id, tag }) => {
+              searchSkills.map(({ skillId, skillName }) => {
                 return (
-                  <S.SearchSkill key={id}>
-                    <S.SearchSkillButton onClick={tag => handleSearch(tag)}>
-                      {tag}
+                  <S.SearchSkill key={skillId}>
+                    <S.SearchSkillButton
+                      onClick={e => handleSearch(e, { skillId, skillName })}
+                    >
+                      {skillName}
                     </S.SearchSkillButton>
                   </S.SearchSkill>
                 );
@@ -88,9 +99,9 @@ export default function FormSkill() {
           </ul>
         </S.SearchSkills>
         <S.SelectedTags>
-          {selectedSkills.map(skill => (
-            <S.SkillTag key={skill} color="grey">
-              {skill}
+          {selectedSkills.map(skillName => (
+            <S.SkillTag key={skillName} color="grey">
+              {skillName}
               <AiOutlineClose size="20" />
             </S.SkillTag>
           ))}
@@ -101,26 +112,26 @@ export default function FormSkill() {
 }
 
 const SKILL_LIST = [
-  { id: 1, tag: 'Python' },
-  { id: 2, tag: 'Spring Framework' },
-  { id: 3, tag: 'AWS' },
-  { id: 4, tag: 'Git' },
-  { id: 5, tag: 'iOS' },
-  { id: 6, tag: 'HTML' },
-  { id: 7, tag: 'JavaScript' },
-  { id: 8, tag: 'MySQL' },
-  { id: 9, tag: 'SQL' },
-  { id: 10, tag: 'Linux' },
-  { id: 11, tag: 'Android' },
-  { id: 12, tag: 'Kotlin' },
-  { id: 13, tag: 'Swift' },
-  { id: 14, tag: 'C / C ++' },
-  { id: 15, tag: 'PHP' },
-  { id: 16, tag: 'Docker' },
-  { id: 17, tag: 'React' },
-  { id: 18, tag: 'Github' },
-  { id: 19, tag: 'JPA' },
-  { id: 20, tag: 'C++' },
-  { id: 21, tag: 'abc' },
-  { id: 22, tag: 'abd' },
+  { skillId: 1, skillName: 'Python' },
+  { skillId: 2, skillName: 'Spring Framework' },
+  { skillId: 3, skillName: 'AWS' },
+  { skillId: 4, skillName: 'Git' },
+  { skillId: 5, skillName: 'iOS' },
+  { skillId: 6, skillName: 'HTML' },
+  { skillId: 7, skillName: 'JavaScript' },
+  { skillId: 8, skillName: 'MySQL' },
+  { skillId: 9, skillName: 'SQL' },
+  { skillId: 10, skillName: 'Linux' },
+  { skillId: 11, skillName: 'Android' },
+  { skillId: 12, skillName: 'Kotlin' },
+  { skillId: 13, skillName: 'Swift' },
+  { skillId: 14, skillName: 'C / C ++' },
+  { skillId: 15, skillName: 'PHP' },
+  { skillId: 16, skillName: 'Docker' },
+  { skillId: 17, skillName: 'React' },
+  { skillId: 18, skillName: 'Github' },
+  { skillId: 19, skillName: 'JPA' },
+  { skillId: 20, skillName: 'C++' },
+  { skillId: 21, skillName: 'abc' },
+  { skillId: 22, skillName: 'abd' },
 ];

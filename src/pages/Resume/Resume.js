@@ -34,58 +34,66 @@ export default function Resume() {
   }, []);
 
   return (
-    <S.ResumeContainer>
-      <S.Header>
-        <S.HeaderTitle>최근 문서</S.HeaderTitle>
-        <S.HeaderDescription>
-          원티드 이력서 소개
-          <AiOutlineInfoCircle />
-        </S.HeaderDescription>
-      </S.Header>
-      <S.ResumeMakeBox onClick={() => goToUrl(navigate, '/resume/form')}>
-        <S.ResumeMakeBoxIcon color="blue">
-          <IoDocuments size="25" />
-        </S.ResumeMakeBoxIcon>
-        새 이력서 작성
-      </S.ResumeMakeBox>
-      <S.ResumeMakeBox>
-        <label htmlFor="upload">
-          <S.ResumeMakeBoxIcon color="grey">
-            <MdDriveFolderUpload size="25" />
-          </S.ResumeMakeBoxIcon>
-          파일 업로드
-        </label>
-        <input type="file" id="upload" name="upload" accept=".pdf" hidden />
-      </S.ResumeMakeBox>
-      {resumeList.length > 0 &&
-        resumeList.map(({ userId, resumeId, title, date }) => {
-          return (
-            <S.Resume key={resumeId} userId={userId}>
-              <S.ResumeInfo>
-                <S.ResumeInfoButton name="matchUp">
-                  매치업 이력서
-                </S.ResumeInfoButton>
-                <S.ResumeInfoButton name="career">
-                  경력인증
-                  <BsFillCheckCircleFill size="15" />
-                </S.ResumeInfoButton>
-              </S.ResumeInfo>
-              <S.ResumeTitle hasCompleted={true}>
-                <S.ResumeTitleTextBox title="true">
-                  {title}
-                </S.ResumeTitleTextBox>
-                <S.ResumeTitleTextBox>{date}</S.ResumeTitleTextBox>
-              </S.ResumeTitle>
-              <S.ResumeStatus hasCompleted={true}>
-                <S.ResumeStatusLang>한</S.ResumeStatusLang>
-                <S.ResumeStatusInfo>작성 완료</S.ResumeStatusInfo>
-                <div>
-                  <BiDotsVerticalRounded />
-                </div>
-              </S.ResumeStatus>
-            </S.Resume>
-          );
-        })}
-    </S.ResumeContainer>
+    <S.ResumeBody>
+      <S.ResumeContainer>
+        <S.Header>
+          <S.HeaderTitle>최근 문서</S.HeaderTitle>
+          <S.HeaderDescription>
+            원티드 이력서 소개
+            <AiOutlineInfoCircle />
+          </S.HeaderDescription>
+        </S.Header>
+        <S.ResumeListContainer>
+          <S.ResumeMakeBox onClick={() => goToUrl(navigate, '/resume/form')}>
+            <S.ResumeMakeBoxIcon color="blue">
+              <IoDocuments size="25" />
+            </S.ResumeMakeBoxIcon>
+            새 이력서 작성
+          </S.ResumeMakeBox>
+          <S.ResumeMakeBox>
+            <label htmlFor="upload">
+              <S.ResumeMakeBoxIcon color="grey">
+                <MdDriveFolderUpload size="25" />
+              </S.ResumeMakeBoxIcon>
+              파일 업로드
+            </label>
+            <input type="file" id="upload" name="upload" accept=".pdf" hidden />
+          </S.ResumeMakeBox>
+          {resumeList.length > 0 &&
+            resumeList.map(({ userId, resumeId, title, date }) => {
+              return (
+                <S.Resume
+                  key={resumeId}
+                  userId={userId}
+                  onClick={() => goToUrl(navigate, `/resume/${resumeId}`)}
+                >
+                  <S.ResumeInfo>
+                    <S.ResumeInfoButton name="matchUp">
+                      매치업 이력서
+                    </S.ResumeInfoButton>
+                    <S.ResumeInfoButton name="career">
+                      경력인증
+                      <BsFillCheckCircleFill size="15" />
+                    </S.ResumeInfoButton>
+                  </S.ResumeInfo>
+                  <S.ResumeTitle hasCompleted={true}>
+                    <S.ResumeTitleTextBox title="true">
+                      {title}
+                    </S.ResumeTitleTextBox>
+                    <S.ResumeTitleTextBox>{date}</S.ResumeTitleTextBox>
+                  </S.ResumeTitle>
+                  <S.ResumeStatus hasCompleted={true}>
+                    <S.ResumeStatusLang>한</S.ResumeStatusLang>
+                    <S.ResumeStatusInfo>작성 완료</S.ResumeStatusInfo>
+                    <div>
+                      <BiDotsVerticalRounded />
+                    </div>
+                  </S.ResumeStatus>
+                </S.Resume>
+              );
+            })}
+        </S.ResumeListContainer>
+      </S.ResumeContainer>
+    </S.ResumeBody>
   );
 }

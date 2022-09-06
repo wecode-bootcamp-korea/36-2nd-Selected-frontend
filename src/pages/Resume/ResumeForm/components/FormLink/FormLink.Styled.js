@@ -31,3 +31,14 @@ export const LinkInput = styled.input`
     color: #aaaaaa;
   }
 `;
+
+export const SubmitLinkButton = styled.button`
+  width: 80px;
+  height: 30px;
+  border: none;
+  border-radius: 15px;
+  background-color: inherit;
+  color: #3366ff;
+  font-weight: 700;
+  cursor: pointer;
+`;

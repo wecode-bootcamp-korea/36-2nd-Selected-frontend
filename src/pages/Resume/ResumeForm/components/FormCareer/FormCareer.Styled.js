@@ -112,3 +112,14 @@ export const CareerInfoInput = styled.input`
       }
       `}
 `;
+
+export const SubmitCareerButton = styled.button`
+  width: 80px;
+  height: 30px;
+  border: none;
+  border-radius: 15px;
+  background-color: inherit;
+  color: #3366ff;
+  font-weight: 700;
+  cursor: pointer;
+`;

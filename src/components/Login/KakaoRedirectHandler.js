@@ -25,10 +25,11 @@ const KakaoRedirectHandler = () => {
           method: 'POST',
           headers: { Authorization: `Bearer ${JSON.stringify(kakaoToken)}` },
         };
+
         fetch(API.POST_LOGIN, headers)
           .then(response => response.json())
           .then(data => {
-            localStorage.setItem('token', JSON.stringify(data));
+            localStorage.setItem('token', JSON.stringify(data.token));
             alert('환영합니다.');
             goToUrl(navigate, '/');
           });

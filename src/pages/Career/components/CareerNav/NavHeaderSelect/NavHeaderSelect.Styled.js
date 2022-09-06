@@ -2,7 +2,8 @@ import styled from 'styled-components';
 
 export const NavHeaderSelect = styled.div`
   ${({ theme }) => theme.variables.flex('row')}
-  margin: 0 px;
+  margin-top: 64px;
+  margin-right: 32px;
   font-weight: 500;
   font-size: ${({ fontSize }) => fontSize};
   cursor: pointer;
