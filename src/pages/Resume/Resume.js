@@ -35,7 +35,7 @@ export default function Resume() {
 
   const handleDelete = resumeId => {
     fetch(`${API.DELETE_RESUME}/${resumeId}`, {
-      method: 'POST',
+      method: 'DELETE',
       headers: {
         'Content-Type': 'application/json',
         Authorization: localStorage.getItem('token'),
@@ -94,11 +94,11 @@ export default function Resume() {
                   </S.ResumeTitle>
                   <S.ResumeStatus hasCompleted={true}>
                     <S.ResumeStatusLang>한</S.ResumeStatusLang>
-                    <S.ResumeStatusInfo>작성 완료</S.ResumeStatusInfo>
+                    <S.ResumeStatusInfo onClick={() => handleDelete(resumeId)}>
+                      작성 완료
+                    </S.ResumeStatusInfo>
                     <div>
-                      <BiDotsVerticalRounded
-                        onClick={() => handleDelete(resumeId)}
-                      />
+                      <BiDotsVerticalRounded />
                     </div>
                   </S.ResumeStatus>
                 </S.Resume>

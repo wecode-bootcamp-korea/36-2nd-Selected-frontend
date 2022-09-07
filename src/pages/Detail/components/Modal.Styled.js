@@ -8,7 +8,7 @@ export const ModalContainer = styled.aside`
   left: 63%;
 
   ${({ scroll, height }) => {
-    const offsetY = 120;
+    const offsetY = 100;
     const targetHeight = height - 95;
     if (scroll + offsetY < targetHeight) {
       return `top:${scroll + offsetY}px`;
