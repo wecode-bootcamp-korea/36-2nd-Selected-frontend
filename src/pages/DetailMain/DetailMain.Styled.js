@@ -8,8 +8,9 @@ export const DetailMain = styled.div`
 `;
 
 export const DetailCarousel = styled.div`
-  width: 100%;
+  width: 97%;
   padding: 0px 450px 0px 100px;
+
   .slick-prev {
     height: 100%;
     width: 50px;
@@ -20,6 +21,7 @@ export const DetailCarousel = styled.div`
       content: '〈';
     }
   }
+
   .slick-next {
     height: 100%;
     width: 50px;
@@ -29,6 +31,7 @@ export const DetailCarousel = styled.div`
       content: '〉';
     }
   }
+
   .slick-prev:before,
   .slick-next:before {
     display: flex;

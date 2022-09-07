@@ -1,5 +1,4 @@
 import * as S from './Login.Styled';
-import { useState } from 'react';
 import { KAKAO_AUTH_URL } from './OAuth';
 import { AiOutlineClose } from 'react-icons/ai';
 

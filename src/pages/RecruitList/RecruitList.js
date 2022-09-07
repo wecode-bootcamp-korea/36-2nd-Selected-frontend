@@ -35,16 +35,15 @@ export default function RecruitList() {
         .then(response => response.json())
         .then(data => setList(data.jobs));
     }
-  }, []);
+  }, [pathname]);
 
   useEffect(() => {
     if (!(pathname === '/')) {
       fetch(`${API.GET_JOBS}?offset=${(scroll - 1) * count}&limit=${count}`)
         .then(response => response.json())
-        .then(data => setList([...list, ...data.jobs]));
+        .then(data => setList(prev => [...prev, ...data.jobs]));
     }
-  }, [scroll]);
-  console.log('list', list);
+  }, [scroll, pathname]);
 
   useEffect(() => {
     const handleScroll = e => setNavScroll(e.currentTarget.scrollY);

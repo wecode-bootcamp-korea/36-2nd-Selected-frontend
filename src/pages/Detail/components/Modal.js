@@ -1,9 +1,9 @@
 import React from 'react';
 import * as S from './Modal.Styled';
 
-export default function Modal() {
+export default function Modal({ scroll, height }) {
   return (
-    <S.ModalContainer>
+    <S.ModalContainer scroll={scroll} height={height}>
       <S.ModalHeader>
         <S.ModalTitle>채용보상금</S.ModalTitle>
         <S.ModalList>

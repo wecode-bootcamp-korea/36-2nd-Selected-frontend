@@ -6,8 +6,9 @@ const selectedBlack = ({ theme }) => theme.theme.selectedBlack;
 const borderColor = '#bababa';
 
 export const ResumeBody = styled.div`
-  ${variables.flex()};
+  ${variables.flex('row', 'center', 'flex-start')};
   width: 100%;
+  min-height: 100vh;
   background-color: #f8f8fa;
 `;
 

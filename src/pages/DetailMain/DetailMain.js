@@ -9,10 +9,12 @@ import { API } from '../../api';
 import Modal from '../Detail/components/Modal';
 import Map from '../Detail/components/Map';
 import RecruitList from '../RecruitList/RecruitList';
+import { useRef } from 'react';
 
 export default function DetailMain() {
   const { num } = useParams();
   const [data, setData] = useState({});
+  const [scroll, setScroll] = useState(0);
 
   useEffect(() => {
     fetch(`${API.GET_JOBS_DETAIL}/${num}`, {
@@ -22,6 +24,13 @@ export default function DetailMain() {
       .then(result => setData(result));
   }, [num]);
 
+  useEffect(() => {
+    const handleScroll = e => setScroll(e.currentTarget.scrollY);
+    window.addEventListener('scroll', handleScroll);
+
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   const settings = {
     dots: true,
     infinite: false,
@@ -30,10 +39,17 @@ export default function DetailMain() {
     slidesToScroll: 1,
   };
 
+  const [height, setHeight] = useState(0);
+  const ref = useRef(null);
+
+  useEffect(() => {
+    setHeight(ref.current.clientHeight);
+  });
+
   return (
     <>
-      <S.StickyContainer>
-        <Modal />
+      <S.StickyContainer ref={ref}>
+        <Modal scroll={scroll} height={height} />
         <S.DetailMain>
           {data.jobInfo && (
             <S.DetailCarousel>

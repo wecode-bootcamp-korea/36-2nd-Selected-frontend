@@ -25,6 +25,13 @@ export default function ResumeForm() {
   const addLinkData = useRecoilValue(addLinkDataState);
 
   useEffect(() => {
+    if (!localStorage.getItem('token')) {
+      goToUrl(navigate, '/');
+      alert('로그인이 필요한 서비스입니다.');
+    }
+  }, [navigate]);
+
+  useEffect(() => {
     if (resumesId !== undefined) {
       fetch(`${API.GET_RESUME_DETAIL}/${resumesId}`, {
         method: 'GET',
