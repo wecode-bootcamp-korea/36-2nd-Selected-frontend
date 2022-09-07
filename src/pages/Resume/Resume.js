@@ -14,6 +14,13 @@ export default function Resume() {
   const [resumeList, setResumeList] = useState([]);
 
   useEffect(() => {
+    if (!localStorage.getItem('token')) {
+      goToUrl(navigate, '/');
+      alert('로그인이 필요한 서비스입니다.');
+    }
+  }, [navigate]);
+
+  useEffect(() => {
     const token = localStorage.getItem('token');
     const options = {
       method: 'GET',
@@ -25,6 +32,16 @@ export default function Resume() {
       .then(response => response.json())
       .then(data => setResumeList(data));
   }, []);
+
+  const handleDelete = resumeId => {
+    fetch(`${API.DELETE_RESUME}/${resumeId}`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: localStorage.getItem('token'),
+      },
+    });
+  };
 
   return (
     <S.ResumeBody>
@@ -79,7 +96,9 @@ export default function Resume() {
                     <S.ResumeStatusLang>한</S.ResumeStatusLang>
                     <S.ResumeStatusInfo>작성 완료</S.ResumeStatusInfo>
                     <div>
-                      <BiDotsVerticalRounded />
+                      <BiDotsVerticalRounded
+                        onClick={() => handleDelete(resumeId)}
+                      />
                     </div>
                   </S.ResumeStatus>
                 </S.Resume>

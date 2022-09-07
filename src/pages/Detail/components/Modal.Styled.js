@@ -6,6 +6,16 @@ export const ModalContainer = styled.aside`
   box-sizing: border-box;
   position: absolute;
   left: 63%;
+
+  ${({ scroll, height }) => {
+    const offsetY = 120;
+    const targetHeight = height - 95;
+    if (scroll + offsetY < targetHeight) {
+      return `top:${scroll + offsetY}px`;
+    } else {
+      return `top:${targetHeight}px;`;
+    }
+  }}
 `;
 
 export const ModalHeader = styled.header`
