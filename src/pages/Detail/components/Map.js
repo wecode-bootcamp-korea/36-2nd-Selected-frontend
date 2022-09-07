@@ -15,6 +15,7 @@ function Map() {
       zoomControl: true,
       zoomControlOptions: {
         position: naver.maps.Position.TOP_RIGHT,
+        zIndex: 0,
       },
     };
     const map = new naver.maps.Map(mapElement.current, mapOptions);
@@ -36,7 +37,7 @@ function Map() {
           서울시 강남구 테헤란로 427 위워크 선릉2호점 13층
         </S.Location>
       </S.Wrap>
-      <S.MapLayout ref={mapElement} />;
+      <S.MapLayout ref={mapElement} />
     </>
   );
 }

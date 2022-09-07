@@ -18,7 +18,12 @@ const KakaoRedirectHandler = () => {
     };
 
     fetch(requestURL, requestHeaders)
-      .then(response => response.json())
+      .then(response => {
+        if (response.ok) {
+          return response.json();
+        }
+        throw alert('response is not ok ');
+      })
       .then(data => {
         const kakaoToken = data;
         const headers = {
@@ -27,7 +32,12 @@ const KakaoRedirectHandler = () => {
         };
 
         fetch(API.POST_LOGIN, headers)
-          .then(response => response.json())
+          .then(response => {
+            if (response.ok) {
+              return response.json();
+            }
+            throw alert('response is not ok ');
+          })
           .then(data => {
             localStorage.setItem('token', JSON.stringify(data.token));
             alert('환영합니다.');

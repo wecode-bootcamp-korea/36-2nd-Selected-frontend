@@ -4,14 +4,13 @@ export const ModalContainer = styled.aside`
   width: 340px;
   display: block;
   box-sizing: border-box;
-  position: sticky;
-  top: 70px;
-  left: 62.9%;
+  position: absolute;
+  left: 63%;
 `;
 
 export const ModalHeader = styled.header`
   font-size: 14px;
-  color: #33333;
+  color: #333;
   border: 1px solid #e1e2e3;
   background-color: #fff;
   padding: 24px 20px;

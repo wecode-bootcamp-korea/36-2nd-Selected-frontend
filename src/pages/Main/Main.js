@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
+import Footer from '../../components/Footer/Footer.js';
 import Slider from 'react-slick';
 import * as S from './Main.Styled.js';
+import RecruitList from '../RecruitList/RecruitList.js';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import { goToUrl } from '../../utills.js';
@@ -37,7 +39,7 @@ export default function Main() {
     slidesToShow: 1,
     slidesToScroll: 1,
     centerMode: true,
-    centerPadding: '300px',
+    centerPadding: '220px',
     pauseOnHover: true,
     autoplaySpeed: 3000,
   };
@@ -98,7 +100,7 @@ export default function Main() {
       </S.ProfileMatchUp>
       <S.JobInfoWrap>
         <S.Tag>
-          <S.TagBold>{jobInfoData.length > 0 && jobInfoData[0].tag} </S.TagBold>
+          <S.TagBold>#{jobs && jobs[0].tag} </S.TagBold>
           회사를 소개합니다
         </S.Tag>
         <S.TagDetail>포지션으로 더보기 〉</S.TagDetail>
@@ -119,7 +121,10 @@ export default function Main() {
               );
             })}
         </Slider>
+        <S.borderbox />
       </S.JobInfoWrap>
+      <RecruitList />
+      <Footer />
     </>
   );
 }

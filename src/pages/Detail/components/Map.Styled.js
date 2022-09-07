@@ -3,6 +3,7 @@ import styled from 'styled-components';
 export const MapLayout = styled.div`
   width: 700px;
   height: 300px;
+  margin-top: 10px;
 `;
 
 export const DeadLine = styled.div`

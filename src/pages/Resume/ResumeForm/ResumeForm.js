@@ -12,10 +12,12 @@ import {
 } from '../../../atom.js';
 import { useRecoilValue, useRecoilState } from 'recoil';
 import { FORM_DATA_LIST } from './ResumeForm.Data.js';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { useEffect } from 'react';
+import { goToUrl } from '../../../utills.js';
 
 export default function ResumeForm() {
+  const navigate = useNavigate();
   const { resumesId } = useParams();
   const [, setAddCareerData] = useRecoilState(addCareerDataState);
   const addSkillData = useRecoilValue(addSkillDataState);
@@ -101,7 +103,9 @@ export default function ResumeForm() {
             Authorization: localStorage.getItem('token'),
           },
           body: JSON.stringify({ resumeId, linkUrls: addLinkData }),
-        }).then(response => response.json());
+        })
+          .then(response => response.json())
+          .then(data => goToUrl(navigate, '/resume'));
       });
   };
 
@@ -147,7 +151,7 @@ export default function ResumeForm() {
         })}
       </S.FormBody>
       <S.SubmitFormButton onClick={handlePostForm}>
-        포스트 테스트!!!
+        작성 완료!
       </S.SubmitFormButton>
     </S.ResumeForm>
   );

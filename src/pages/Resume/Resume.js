@@ -13,13 +13,6 @@ export default function Resume() {
   const navigate = useNavigate();
   const [resumeList, setResumeList] = useState([]);
 
-  // const resumeList = useFetch(API.GET_RESUMES, {
-  //   method: 'GET',
-  //   headers: {
-  //     authorization: token,git
-  //   },
-  // });
-
   useEffect(() => {
     const token = localStorage.getItem('token');
     const options = {

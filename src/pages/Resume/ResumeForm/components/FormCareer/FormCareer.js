@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { addCareerDataState, hasCareerInfoState } from '../../../../../atom.js';
 import * as S from './FormCareer.Styled.js';
 import { useRecoilState } from 'recoil';
@@ -48,20 +48,10 @@ export default function FormCareer() {
     setCareerInfo({ ...careerInfo, [name]: value });
   };
 
-  const [addCareerData, setAddCareerData] = useRecoilState(addCareerDataState);
+  const [, setAddCareerData] = useRecoilState(addCareerDataState);
   const handleSubmitCareer = () => {
     setAddCareerData([{ ...careerInfo, ...getDateFromInput() }]);
   };
-
-  useEffect(() => {
-    console.log(addCareerData);
-    // const { companyName, department } = addCareerData[0];
-    // setCareerInfo({ companyName, department });
-    // const { startDate, endDate } = addCareerData[0];
-    // console.log('startDate:', startDate);
-    // console.log('endDate:', endDate);
-    // setDateInfo();
-  }, [addCareerData]);
 
   return (
     <S.FormCareer>

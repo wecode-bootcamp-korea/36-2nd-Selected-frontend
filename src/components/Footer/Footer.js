@@ -1,6 +1,5 @@
 // TODO import React, { useState } from 'react';
 import * as S from './Footer.Styled';
-
 export default function Footer() {
   // TODO  const [test, setTest] = useState({
   //     select: '',
