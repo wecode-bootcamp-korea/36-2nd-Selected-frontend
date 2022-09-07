@@ -41,7 +41,7 @@ export const HeaderDescription = styled.div`
 `;
 
 export const ResumeListContainer = styled.div`
-  ${variables.flex()}
+  ${variables.flex('center', 'flex-start')}
   max-width: 1100px;
   flex-wrap: wrap;
 `;

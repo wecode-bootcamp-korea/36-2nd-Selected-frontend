@@ -81,7 +81,7 @@ export const SearchIcon = styled.span`
 export const SearchSkills = styled.div`
   display: ${({ searchString }) => (!searchString ? 'none' : 'block')};
   position: absolute;
-  width: calc(100% - 96px);
+  width: calc(100% - 35%);
   z-index: 10;
   background-color: white;
   border: 1px solid ${borderColor};
