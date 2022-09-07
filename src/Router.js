@@ -1,6 +1,4 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Footer from './components/Footer/Footer';
-import Login from './components/Login/Login';
 import Nav from './components/Nav/Nav';
 import Main from './pages/Main/Main';
 import MyPage from './pages/MyPage/MyPage';
@@ -16,20 +14,16 @@ const Router = () => {
       <Nav />
       <Routes>
         <Route path="/" element={<Main />} />
-        <Route path="/login" element={<Login />} />
         <Route
           path="/oauth/callback/kakao"
           element={<KakaoRedirectHandler />}
         />
-
-        <Route path="/mypage" element={<MyPage />} />
-        <Route path="/detail" element={<DetailMain />} />
-        <Route path="/recruitlist" element={<RecruitList />} />
+        <Route path="/detail/:num" element={<DetailMain />} />
+        <Route path="/recruitList" element={<RecruitList />} />
         <Route path="/resume" element={<Resume />} />
         <Route path="/resume/form" element={<ResumeForm />} />
         <Route path="/resume/:resumesId" element={<ResumeForm />} />
       </Routes>
-      <Footer />
     </BrowserRouter>
   );
 };

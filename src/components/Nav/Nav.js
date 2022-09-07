@@ -1,5 +1,6 @@
 import React from 'react';
 import * as S from './Nav.Styled';
+import Login from '../Login/Login';
 import Dropdown from './Dropdown/Dropdown';
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
@@ -8,8 +9,9 @@ import { goToUrl } from '../../utills';
 
 export default function Nav() {
   const [toggle, setToggle] = useState(false);
+  const [modal, setModal] = useState(false);
   const navigate = useNavigate();
-  const insertedToken = localStorage.getItem('authorization');
+  const insertedToken = localStorage.getItem('token');
   const logout = () => {
     localStorage.clear();
     window.location.replace('');
@@ -44,7 +46,11 @@ export default function Nav() {
           {insertedToken ? (
             <S.AsideButton onClick={logout}> 로그아웃</S.AsideButton>
           ) : (
-            <S.AsideButton onClick={() => goToUrl(navigate, '/login')}>
+            <S.AsideButton
+              onClick={() => {
+                setModal(true);
+              }}
+            >
               회원가입/로그인
             </S.AsideButton>
           )}
@@ -52,6 +58,7 @@ export default function Nav() {
           <S.ServiceButton>기업 서비스</S.ServiceButton>
         </S.Aside>
       </S.Title>
+      {modal && <Login setModal={setModal} />}
     </S.Container>
   );
 }

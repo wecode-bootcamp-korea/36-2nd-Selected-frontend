@@ -10,22 +10,22 @@ export const MapWrap = styled.div`
 
 export const Search = styled.img.attrs({ src: `${search}` })`
   position: absolute;
-  width: 30px;
-  left: 40%;
+  width: 25px;
+  left: 35%;
 `;
 
 export const Wrap = styled.div`
   margin: 5% auto;
   width: 100%;
   .slick-prev {
-    left: calc((100% - 1550px) / 2);
+    left: calc((100% - 1130px) / 2);
     z-index: 9;
     ::before {
       ${variables.flex()}
       position: absolute;
       top: -95px;
-      width: 40px;
-      height: 90px;
+      width: 32px;
+      height: 62px;
       opacity: 0.75;
       border-radius: 30px;
       background-color: #fff;
@@ -34,13 +34,13 @@ export const Wrap = styled.div`
     }
   }
   .slick-next {
-    right: calc((100% - 1500px) / 2);
+    right: calc((100% - 1100px) / 2);
     ::before {
       ${variables.flex()}
       position: absolute;
       top: -95px;
-      width: 40px;
-      height: 90px;
+      width: 32px;
+      height: 62px;
       opacity: 0.75;
       border-radius: 30px;
       background-color: #fff;
@@ -53,12 +53,12 @@ export const Wrap = styled.div`
 export const PositionInfo = styled.div`
   ${variables.flex()}
   ${variables.absoluteCenter}
-  height: 80px;
+  height: 70px;
   width: 70%;
   color: white;
   font-size: 18px;
   font-weight: 700;
-  margin-top: 150px;
+  margin-top: 80px;
   border-radius: 35px;
   position: relative;
   cursor: pointer;
@@ -95,19 +95,20 @@ export const CompanyInfo = styled.div`
 export const Company = styled.img`
   ${variables.flex()}
   width: 100%;
-  height: 500px;
+  height: 320px;
   padding: 12px 15px 25px 15px;
 `;
 
 export const JobSuggest = styled.div`
   max-width: 100vw;
+  height: 350px;
   background: #f4f8fb;
-  padding: 60px;
+  padding: 45px;
 `;
 
 export const SelectedAi = styled.div`
   ${variables.flex()}
-  padding-top: 60px;
+  padding-top: 30px;
   padding-bottom: 40px;
   font-size: 50px;
   background-color: #f2f7fc;
@@ -143,7 +144,7 @@ export const SelectedButton = styled.button`
 `;
 
 export const ConfuseDobbyIsFree = styled.div`
-  height: 200px;
+  height: 150px;
   width: 100%;
   margin: 20px 0px 60px 0px;
   padding: 0px 121px 0px 121px;
@@ -152,23 +153,23 @@ export const ConfuseDobbyIsFree = styled.div`
 `;
 
 export const WorkOrLeave = styled.div`
-  font-size: 30px;
+  font-size: 25px;
   line-height: 30px;
   font-weight: 700;
   color: #5071dc;
-  padding: 60px;
+  padding: 40px;
 `;
 
 export const WorkOrLeaveButton = styled.button`
   ${variables.flex()};
-  width: 150px;
+  width: 120px;
   height: 40px;
   margin-top: 10px;
   border: none;
   border-radius: 25px;
   background-color: #5071dc;
   color: #fff;
-  font-size: 17px;
+  font-size: 14px;
   font-weight: 700;
   line-height: 16px;
   cursor: pointer;
@@ -176,7 +177,8 @@ export const WorkOrLeaveButton = styled.button`
 
 export const ProfileMatchUp = styled.ul`
   ${variables.flex()};
-  height: 100px;
+
+  height: 200px;
   width: 70%;
   margin-left: 15%;
 `;
@@ -186,9 +188,9 @@ export const Profile = styled.li`
   position: relative;
   flex: 1 0;
   color: #333;
-  font-size: 23px;
+  font-size: 19px;
   font-weight: 500;
-  height: 100px;
+  height: 80px;
   background-color: #f2f5ff;
   border-top-left-radius: 38.5px;
   border-bottom-left-radius: 38.5px;
@@ -199,9 +201,9 @@ export const MatchUp = styled.li`
   ${variables.flex()};
   flex: 1 0;
   position: relative;
-  font-size: 23px;
+  font-size: 19px;
   font-weight: 500;
-  height: 100px;
+  height: 80px;
   border-top-right-radius: 38.5px;
   border-bottom-right-radius: 38.5px;
   border-left: none;
@@ -211,19 +213,19 @@ export const MatchUp = styled.li`
 
 export const CompanyImg = styled.img.attrs({ src: `${company}` })`
   position: absolute;
-  width: 30px;
+  width: 25px;
   left: 38%;
 `;
 
 export const UserImg = styled.img.attrs({ src: `${user}` })`
   position: absolute;
-  width: 30px;
-  left: 37%;
+  width: 25px;
+  left: 35%;
 `;
 
 export const Tag = styled.div`
   ${variables.flex()};
-  font-size: 30px;
+  font-size: 25px;
   padding-bottom: 15px;
 `;
 
@@ -234,7 +236,7 @@ export const TagBold = styled.div`
 
 export const TagDetail = styled.div`
   ${variables.flex()}
-  font-size: 18px;
+  font-size: 15px;
   color: #666666;
   cursor: pointer;
 `;
@@ -242,8 +244,8 @@ export const TagDetail = styled.div`
 export const JobInfoImg = styled.img`
   ${variables.flex()}
   width: 100%;
-  height: 400px;
-  padding: 12px 12px 12px 12px;
+  height: 300px;
+  padding: 10px;
 `;
 
 export const CompanyAndDepart = styled.div`
@@ -251,7 +253,7 @@ export const CompanyAndDepart = styled.div`
   flex-direction: column;
 `;
 export const CompanyName = styled.div`
-  font-size: 25px;
+  font-size: 20px;
   font-weight: 700;
   padding-left: 12px;
   padding-bottom: 5px;
@@ -259,7 +261,7 @@ export const CompanyName = styled.div`
 `;
 export const Department = styled.div`
   padding-left: 12px;
-  font-size: 18px;
+  font-size: 14px;
   font-weight: 500;
   color: #999;
 `;
@@ -270,8 +272,8 @@ export const JobInfoButton = styled.button`
   padding: 20px 30px 20px 30px;
   margin-right: 12px;
   height: 40px;
-  font-size: 17px;
-  font-weight: 700;
+  font-size: 15px;
+  font-weight: 600;
   color: #36f;
   background-color: #fff;
   cursor: pointer;
@@ -289,18 +291,19 @@ export const JobInfoWrap = styled.div`
 
   .slick-prev {
     left: calc((100% - 1330px) / 2);
-    z-index: 9999;
+    z-index: 1;
     ::before {
       ${variables.flex()}
       position: absolute;
-      top: -280px;
-      width: 50px;
-      height: 50px;
+      top: -230px;
+      left: 180px;
+      width: 40px;
+      height: 40px;
       opacity: 0.75;
       border-radius: 50%;
       background-color: white;
       border: 1px solid lightgray;
-      color: #e1e2e3;
+      color: black;
       box-shadow: 0 2px 2px 0 rgb(0 0 0 / 10%);
       pointer-events: all;
       content: '<';
@@ -314,16 +317,22 @@ export const JobInfoWrap = styled.div`
     ::before {
       ${variables.flex()}
       position: absolute;
-      top: -280px;
-      width: 50px;
-      height: 50px;
+      top: -230px;
+      right: 140px;
+      width: 40px;
+      height: 40px;
       opacity: 0.75;
       border-radius: 50%;
       background-color: white;
       border: 1px solid lightgray;
-      color: #e1e2e3;
+      color: black;
       box-shadow: 0 2px 2px 0 rgb(0 0 0 / 10%);
       content: '>';
     }
   }
+`;
+
+export const borderbox = styled.div`
+  border-bottom: 1px solid black;
+  margin-top: 50px;
 `;

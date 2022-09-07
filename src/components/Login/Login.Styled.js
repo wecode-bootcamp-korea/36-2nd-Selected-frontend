@@ -7,7 +7,7 @@ export const SubModal = styled.div`
   height: 100%;
   background-color: rgba(0, 0, 0, 0.5);
   top: 0;
-  z-index: 2;
+  z-index: 51;
 `;
 export const Modal = styled.div`
   position: absolute;
@@ -16,12 +16,12 @@ export const Modal = styled.div`
   min-width: 500px;
   height: 550px;
   max-height: 700px;
-  top: 50%;
+  top: 600%;
   left: 50%;
   transform: translate(-50%, -50%);
   background-color: #fff;
   border-radius: 5px;
-  z-index: 3;
+  z-index: 52;
 `;
 export const Title = styled.div`
   position: relative;

@@ -9,7 +9,7 @@ import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import { AiOutlineRight } from 'react-icons/ai';
 
-export default function CareerNav() {
+export default function CareerNav({ isDetail, isRecuruitList, navScroll }) {
   const [isMainCategory] = useState(false);
   const [isOpened, setIsOpened] = useState({ main: false, sub: false });
   const [selectedCategory, setSelectedCategory] = useState({
@@ -36,7 +36,11 @@ export default function CareerNav() {
     ),
   };
   return (
-    <S.CareerNav>
+    <S.CareerNav
+      isRecuruitList={isRecuruitList}
+      isDetail={isDetail}
+      navScroll={navScroll}
+    >
       <S.NavHeader>
         <NavHeaderSelectMain
           isOpened={isOpened}
@@ -73,6 +77,7 @@ export default function CareerNav() {
           </S.NavToggleTag>
         </S.StyledSlider>
       </S.NavTags>
+      <S.borderDiv navScroll={navScroll} />
     </S.CareerNav>
   );
 }

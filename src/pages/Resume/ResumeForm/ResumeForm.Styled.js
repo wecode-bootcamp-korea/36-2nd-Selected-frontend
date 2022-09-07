@@ -6,8 +6,10 @@ const borderColor = '#bababa';
 
 export const ResumeForm = styled.div`
   ${variables.flex('column')}
+  margin : 0 auto;
   margin-top: 32px;
   padding: 64px;
+  width: 74%;
 `;
 
 export const ResumeTitle = styled.div`
@@ -91,10 +93,18 @@ export const FormAddition = styled.button`
 `;
 
 export const SubmitFormButton = styled.button`
-  width: 100px;
+  width: 180px;
   height: 50px;
   font-size: 16px;
   cursor: pointer;
   color: #fff;
-  background-color: #002fdb;
+  background-color: #3366ff;
+  border: none;
+  border-radius: 15px;
+  margin-top: 32px;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #33ff;
+  }
 `;

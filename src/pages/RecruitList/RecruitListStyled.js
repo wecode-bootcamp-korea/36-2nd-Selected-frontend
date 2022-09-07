@@ -1,13 +1,20 @@
 import styled from 'styled-components';
 
 export const RecruitList = styled.div`
-  margin: 0 auto;
+  margin: 5% auto;
   padding: 20px 0 80px;
-  width: 80%;
+  width: 74%;
 `;
 export const BookMark = styled.div`
   margin-bottom: 12px;
+  ${({ isRecuruitList, navScroll }) => {
+    if (isRecuruitList && navScroll > 250) {
+      return `margin-top : 280px;`;
+    }
+    return `margin-top : 0;`;
+  }};
 `;
+
 export const MarkButton = styled.button`
   display: flex;
   color: #36f;
@@ -18,10 +25,17 @@ export const MarkButton = styled.button`
 `;
 export const MarkText = styled.span`
   margin-left: 10px;
-  font-size: 20px;
+  font-size: 15px;
   font-weight: 600;
   font-stretch: normal;
   font-style: normal;
+  ${({ isDetail }) =>
+    isDetail
+      ? `
+  font-size : 20px;
+  color : #000;
+  `
+      : ``};
 `;
 
 export const ListLi = styled.li`
@@ -34,6 +48,7 @@ export const ListLi = styled.li`
 
 export const ListLink = styled.a`
   width: 100%;
+  cursor: pointer;
 `;
 
 export const Header = styled.header`
@@ -61,23 +76,40 @@ export const ListText = styled.div`
   margin-top: 5px;
 `;
 export const ListButton = styled.button`
+  display: inline-block;
+  margin-top: 4px;
   border: 1px solid #00aead;
   color: #00aead;
   border-radius: 2px;
   background-color: #fff;
-  display: inline-block;
-  span {
-    line-height: 19px;
-  }
+  font-size: 5px;
+`;
+
+export const ListButtonSpan = styled.span`
+  line-height: 15px;
+  letter-spacing: -1px;
+  padding: 0 0.4px;
 `;
 export const ListSeoul = styled.div`
-  font-weight: 400;
-  color: #999;
+  ${props => props.theme.variables.flex('row', 'flex-start', 'center')};
   margin-top: 10px;
+  width: 100%;
+  color: #999;
+  font-weight: 400;
+  font-size: 14px;
 `;
+
+export const ListSeoulDiv = styled.div`
+  width: 2.5px;
+  height: 2.5px;
+  border-radius: 1.25px;
+  background-color: #999;
+  margin: 0 3px;
+`;
+
 export const ListMoney = styled.div`
   margin-top: 10px;
   color: #333;
-  font-size: 16px;
+  font-size: 14px;
   font-weight: 500;
 `;
